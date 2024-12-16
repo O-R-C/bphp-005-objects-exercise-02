@@ -8,8 +8,7 @@ function generateSchedule(int|null $month = null, int|null $year = null, int $pe
   $data = calcStatingData($month, $year, $period);
 
   startGenerator($data, $schedule);
-
-  print_r($schedule);
+  printSchedule($schedule);
 }
 
 /**
@@ -212,6 +211,27 @@ function isMoreDay(int $i, int $numberDays): bool
 function calcDate(int $i, array $arr): string
 {
   return $arr['start']->add(new DateInterval("P{$i}D"))->format("d-m-Y");
+}
+
+/**
+ * Prints a generated schedule to the console.
+ *
+ * This function takes an array of strings representing dates, with days
+ * off marked by a "+" at the end of the string. It prints each day in the
+ * schedule to the console, with working days in green and days off in red.
+ *
+ * @param array $schedule An array of strings representing dates, with days
+ *   off marked by a "+" at the end of the string.
+ */
+function printSchedule(array $schedule): void
+{
+  foreach ($schedule as $day) {
+    if ($day[-1] === "+") {
+      echo "\033[32m $day \033[0m" . PHP_EOL;
+    } else {
+      echo "\033[31m $day \033[0m" . PHP_EOL;
+    }
+  }
 }
 
 // ========== start generator ==========
