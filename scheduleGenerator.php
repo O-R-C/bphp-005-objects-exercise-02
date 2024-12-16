@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function generateSchedule(string|null $month = null, string|null $year = null, string $period = "1"): void
+function generateSchedule(int|null $month = null, int|null $year = null, int $period = 1): void
 {
   $schedule = [];
   $data = calcStatingData($month, $year, $period);
@@ -25,7 +25,7 @@ function generateSchedule(string|null $month = null, string|null $year = null, s
  * @param string|null $period The number of months for the period, defaults to "1".
  * @return array An associative array with keys 'start', 'end', and 'numberDays'.
  */
-function calcStatingData(string|null $month = null, string|null $year = null, string|null $period = "1"): array
+function calcStatingData(int|null $month, int|null $year, int|null $period): array
 {
   if ($month)
     checkValue($month);
@@ -215,4 +215,4 @@ function calcDate(int $i, array $arr): string
 }
 
 // ========== start generator ==========
-generateSchedule();
+generateSchedule(1, 2023, 2);
