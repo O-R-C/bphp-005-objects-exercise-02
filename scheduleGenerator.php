@@ -235,4 +235,9 @@ function printSchedule(array $schedule): void
 }
 
 // ========== start generator ==========
-generateSchedule(1, 2023, 2);
+generateSchedule();
+
+// ========== test generator ==========
+// generateSchedule(1, 2021, 1);
+// generateSchedule(1, 2023, 2);
+// generateSchedule(1, 2025, 5);
